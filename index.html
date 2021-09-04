@@ -352,12 +352,11 @@
 <h1 id="问题二：编写时，com-后面并没有mysql"><a href="#问题二：编写时，com-后面并没有mysql" class="headerlink" title="问题二：编写时，com.后面并没有mysql"></a>问题二：编写<property name="driver" value="com.mysql.jdbc.Driver"></property>时，com.后面并没有mysql</h1><blockquote>
 <p>原因：没有点击Enable Auto-Import</p>
 </blockquote>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p><img src="https://i.loli.net/2021/09/04/JV4TXOxavkqgrUy.png"></p>
+<p><img src="https://i.loli.net/2021/09/04/JV4TXOxavkqgrUy.png"></p>
 <hr>
 <h1 id="问题三：-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-SQL-Mapper-Configuration-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-Mapper-XML-Cause"><a href="#问题三：-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-SQL-Mapper-Configuration-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-Mapper-XML-Cause" class="headerlink" title="问题三：### Cause: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause:"></a>问题三：### Cause: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause:</h1><blockquote>
-<h3 id="原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！"><a href="#原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！" class="headerlink" title="原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！"></a>原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace=<span class="string">&quot;com.itheima.dao.IUserDao&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace=<span class="string">&quot;com.itheima.dao.IUserDao&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！"><a href="#原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！" class="headerlink" title="原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！"></a>原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！</h3></blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace=<span class="string">&quot;com.itheima.dao.IUserDao&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://i.loli.net/2021/09/04/L39PqjJhzEB8Cpt.png"></p>
 <hr>
