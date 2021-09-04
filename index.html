@@ -323,58 +323,35 @@
 
 
   
-    <article id="post-搭建Maven可能遇到的问题-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-IDEA取消双击Shift全局搜索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/04/%E6%90%AD%E5%BB%BAMaven%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98-1/">搭建Maven可能遇到的问题_1</a>
+      <a class="article-title" href="/2021/09/04/IDEA%E5%8F%96%E6%B6%88%E5%8F%8C%E5%87%BBShift%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2/">IDEA取消双击Shift全局搜索</a>
     </h1>
   
 
         
-        <a href="/2021/09/04/%E6%90%AD%E5%BB%BAMaven%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98-1/" class="archive-article-date">
-  	<time datetime="2021-09-04T06:07:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
+        <a href="/2021/09/04/IDEA%E5%8F%96%E6%B6%88%E5%8F%8C%E5%87%BBShift%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2/" class="archive-article-date">
+  	<time datetime="2021-09-04T06:50:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="问题一：-Error-querying-database-Cause-java-sql-SQLException-No-suitable-driver-found-for-jdbc-mysql-localhost-3306-mybatis01"><a href="#问题一：-Error-querying-database-Cause-java-sql-SQLException-No-suitable-driver-found-for-jdbc-mysql-localhost-3306-mybatis01" class="headerlink" title="问题一：### Error querying database.  Cause: java.sql.SQLException: No suitable driver found for jdbc:mysql//localhost:3306/mybatis01"></a>问题一：### Error querying database.  Cause: java.sql.SQLException: No suitable driver found for jdbc:mysql//localhost:3306/mybatis01</h1><blockquote>
-<p>肉眼可见的原因，是因为jdcb:mysql后面忘记加上分号:,属于低级错误!</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;dataSource type=<span class="string">&quot;POOLED&quot;</span>&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;url&quot;</span> value=<span class="string">&quot;jdbc:mysql://localhost:3306/mybatis01&quot;</span>&gt;&lt;/property&gt;</span><br><span class="line">&lt;/dataSource&gt;</span><br></pre></td></tr></table></figure>
-
+        <h2 id="在使用idea时，由于想切换输入法中英文，却总是调出全局搜索的窗口，再去关掉又很麻烦"><a href="#在使用idea时，由于想切换输入法中英文，却总是调出全局搜索的窗口，再去关掉又很麻烦" class="headerlink" title="在使用idea时，由于想切换输入法中英文，却总是调出全局搜索的窗口，再去关掉又很麻烦"></a>在使用idea时，由于想切换输入法中英文，却总是调出全局搜索的窗口，再去关掉又很麻烦</h2><blockquote>
+<h4 id="请看下面"><a href="#请看下面" class="headerlink" title="请看下面"></a>请看下面</h4></blockquote>
+<h4 id="1-按住-Ctrl-N-点击Actions"><a href="#1-按住-Ctrl-N-点击Actions" class="headerlink" title="1.按住 Ctrl+N  点击Actions"></a>1.按住 Ctrl+N  点击Actions</h4><p><img src="https://i.loli.net/2021/09/04/m6GZg12lIz85NCj.png"></p>
 <hr>
-<h1 id="问题二：编写时，com-后面并没有mysql"><a href="#问题二：编写时，com-后面并没有mysql" class="headerlink" title="问题二：编写时，com.后面并没有mysql"></a>问题二：编写<property name="driver" value="com.mysql.jdbc.Driver"></property>时，com.后面并没有mysql</h1><blockquote>
-<p>原因：没有点击Enable Auto-Import</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/09/04/JV4TXOxavkqgrUy.png"></p>
+<h4 id="2-输入registry-双击点进去或者回车"><a href="#2-输入registry-双击点进去或者回车" class="headerlink" title="2.输入registry 双击点进去或者回车"></a>2.输入registry 双击点进去或者回车</h4><p><img src="https://i.loli.net/2021/09/04/EHy2ZaK3xjtpV41.png"></p>
 <hr>
-<h1 id="问题三：-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-SQL-Mapper-Configuration-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-Mapper-XML-Cause"><a href="#问题三：-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-SQL-Mapper-Configuration-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-Mapper-XML-Cause" class="headerlink" title="问题三：### Cause: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause:"></a>问题三：### Cause: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause:</h1><blockquote>
-<p>原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！！</p>
-</blockquote>
-<mapper namespace="com.itheima.dao.IUserDao">
-
-<p><img src="https://i.loli.net/2021/09/04/L39PqjJhzEB8Cpt.png"></p>
+<h4 id="3-找到此项，把勾打上"><a href="#3-找到此项，把勾打上" class="headerlink" title="3.找到此项，把勾打上"></a>3.找到此项，把勾打上</h4><p><img src="https://i.loli.net/2021/09/04/7PMa2URyxHq6DFl.png"></p>
 <hr>
-<h1 id="问题四：泛型报错"><a href="#问题四：泛型报错" class="headerlink" title="问题四：泛型报错"></a>问题四：泛型报错</h1><blockquote>
-<p>原因：要先声明后使用 所以要在泛型前加 &lt;泛型&gt;</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/09/04/NqfgalEk9r6Ycm2.png"></p>
-<hr>
-<h1 id="问题五：java-lang-Exception-No-tests-found-matching-Method-testSaveUser-com-itheima-test-MybatisTest-from-org-junit-internal-requests-ClassRequest-6267c3bb"><a href="#问题五：java-lang-Exception-No-tests-found-matching-Method-testSaveUser-com-itheima-test-MybatisTest-from-org-junit-internal-requests-ClassRequest-6267c3bb" class="headerlink" title="问题五：java.lang.Exception: No tests found matching Method testSaveUser(com.itheima.test.MybatisTest) from org.junit.internal.requests.ClassRequest@6267c3bb"></a>问题五：java.lang.Exception: No tests found matching Method testSaveUser(com.itheima.test.MybatisTest) from org.junit.internal.requests.ClassRequest@6267c3bb</h1><blockquote>
-<p>原因：由于是get set 生成的方法属性，所以这里#{}里面写的是属性原名称，开头不用大写，如果是手动敲得，那就开头要大写，如Username</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=<span class="string">&quot;saveUser&quot;</span> parameterType=<span class="string">&quot;com.itheima.domain.User&quot;</span>&gt;</span><br><span class="line">    <span class="function">insert into <span class="title">user</span><span class="params">(username,birthday,sex,address)</span><span class="title">values</span><span class="params">(#&#123;username&#125;,#&#123;birthday&#125;,#&#123;sex&#125;,#&#123;address&#125;)</span></span>;</span><br><span class="line">&lt;/insert&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>目前先总结到这里！</p>
-
+<h4 id="4-直接关闭，就成功了！-如果想全局搜索，其实按住ctrl-n-也是能代替双击shift操作的！"><a href="#4-直接关闭，就成功了！-如果想全局搜索，其实按住ctrl-n-也是能代替双击shift操作的！" class="headerlink" title="4.直接关闭，就成功了！ 如果想全局搜索，其实按住ctrl+n 也是能代替双击shift操作的！"></a>4.直接关闭，就成功了！ 如果想全局搜索，其实按住ctrl+n 也是能代替双击shift操作的！</h4>
       
 
       
@@ -386,7 +363,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/04/%E6%90%AD%E5%BB%BAMaven%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98-1/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/09/04/IDEA%E5%8F%96%E6%B6%88%E5%8F%8C%E5%87%BBShift%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2/">展开全文 >></a>
         </p>
       
 
