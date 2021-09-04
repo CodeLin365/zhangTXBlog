@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021 | Hexo</title>
+  <title>搭建Maven可能遇到的问题_1 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2021/index.html">
+  <meta name="description" content="问题一：### Error querying database.  Cause: java.sql.SQLException: No suitable driver found for jdbc:mysql&#x2F;&#x2F;localhost:3306&#x2F;mybatis01 肉眼可见的原因，是因为jdcb:mysql后面忘记加上分号:,属于低级错误!  123&lt;dataSource type&#x3D;&quot;P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建Maven可能遇到的问题_1">
+<meta property="og:url" content="http://example.com/2021/09/04/%E6%90%AD%E5%BB%BAMaven%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98-1/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="问题一：### Error querying database.  Cause: java.sql.SQLException: No suitable driver found for jdbc:mysql&#x2F;&#x2F;localhost:3306&#x2F;mybatis01 肉眼可见的原因，是因为jdcb:mysql后面忘记加上分号:,属于低级错误!  123&lt;dataSource type&#x3D;&quot;P">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/09/04/JV4TXOxavkqgrUy.png">
+<meta property="og:image" content="https://i.loli.net/2021/09/04/L39PqjJhzEB8Cpt.png">
+<meta property="og:image" content="https://i.loli.net/2021/09/04/NqfgalEk9r6Ycm2.png">
+<meta property="article:published_time" content="2021-09-04T06:07:41.000Z">
+<meta property="article:modified_time" content="2021-09-04T06:08:24.546Z">
 <meta property="article:author" content="xiao-zhang">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/09/04/JV4TXOxavkqgrUy.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -161,140 +169,209 @@
           </div>
           <div id="js-content" class="content-ll">
             
+<article id="post-搭建Maven可能遇到的问题-1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      搭建Maven可能遇到的问题_1
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/04/%E6%90%AD%E5%BB%BAMaven%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98-1/" class="archive-article-date">
+
+        
+        <a href="/2021/09/04/%E6%90%AD%E5%BB%BAMaven%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98-1/" class="archive-article-date">
   	<time datetime="2021-09-04T06:07:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/04/%E6%90%AD%E5%BB%BAMaven%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98-1/">搭建Maven可能遇到的问题_1</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="问题一：-Error-querying-database-Cause-java-sql-SQLException-No-suitable-driver-found-for-jdbc-mysql-localhost-3306-mybatis01"><a href="#问题一：-Error-querying-database-Cause-java-sql-SQLException-No-suitable-driver-found-for-jdbc-mysql-localhost-3306-mybatis01" class="headerlink" title="问题一：### Error querying database.  Cause: java.sql.SQLException: No suitable driver found for jdbc:mysql//localhost:3306/mybatis01"></a>问题一：### Error querying database.  Cause: java.sql.SQLException: No suitable driver found for jdbc:mysql//localhost:3306/mybatis01</h1><blockquote>
+<p>肉眼可见的原因，是因为jdcb:mysql后面忘记加上分号:,属于低级错误!</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;dataSource type=<span class="string">&quot;POOLED&quot;</span>&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;url&quot;</span> value=<span class="string">&quot;jdbc:mysql://localhost:3306/mybatis01&quot;</span>&gt;&lt;/property&gt;</span><br><span class="line">&lt;/dataSource&gt;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<hr>
+<h1 id="问题二：编写时，com-后面并没有mysql"><a href="#问题二：编写时，com-后面并没有mysql" class="headerlink" title="问题二：编写时，com.后面并没有mysql"></a>问题二：编写<property name="driver" value="com.mysql.jdbc.Driver"></property>时，com.后面并没有mysql</h1><blockquote>
+<p>原因：没有点击Enable Auto-Import</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/09/04/JV4TXOxavkqgrUy.png"></p>
+<hr>
+<h1 id="问题三：-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-SQL-Mapper-Configuration-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-Mapper-XML-Cause"><a href="#问题三：-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-SQL-Mapper-Configuration-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-Mapper-XML-Cause" class="headerlink" title="问题三：### Cause: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause:"></a>问题三：### Cause: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause:</h1><blockquote>
+<p>原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！！</p>
+</blockquote>
+<mapper namespace="com.itheima.dao.IUserDao">
 
+<p><img src="https://i.loli.net/2021/09/04/L39PqjJhzEB8Cpt.png"></p>
+<hr>
+<h1 id="问题四：泛型报错"><a href="#问题四：泛型报错" class="headerlink" title="问题四：泛型报错"></a>问题四：泛型报错</h1><blockquote>
+<p>原因：要先声明后使用 所以要在泛型前加 &lt;泛型&gt;</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/09/04/NqfgalEk9r6Ycm2.png"></p>
+<hr>
+<h1 id="问题五：java-lang-Exception-No-tests-found-matching-Method-testSaveUser-com-itheima-test-MybatisTest-from-org-junit-internal-requests-ClassRequest-6267c3bb"><a href="#问题五：java-lang-Exception-No-tests-found-matching-Method-testSaveUser-com-itheima-test-MybatisTest-from-org-junit-internal-requests-ClassRequest-6267c3bb" class="headerlink" title="问题五：java.lang.Exception: No tests found matching Method testSaveUser(com.itheima.test.MybatisTest) from org.junit.internal.requests.ClassRequest@6267c3bb"></a>问题五：java.lang.Exception: No tests found matching Method testSaveUser(com.itheima.test.MybatisTest) from org.junit.internal.requests.ClassRequest@6267c3bb</h1><blockquote>
+<p>原因：由于是get set 生成的方法属性，所以这里#{}里面写的是属性原名称，开头不用大写，如果是手动敲得，那就开头要大写，如Username</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=<span class="string">&quot;saveUser&quot;</span> parameterType=<span class="string">&quot;com.itheima.domain.User&quot;</span>&gt;</span><br><span class="line">    <span class="function">insert into <span class="title">user</span><span class="params">(username,birthday,sex,address)</span><span class="title">values</span><span class="params">(#&#123;username&#125;,#&#123;birthday&#125;,#&#123;sex&#125;,#&#123;address&#125;)</span></span>;</span><br><span class="line">&lt;/insert&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>目前先总结到这里！</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://98zxl0310.github.io/2021/09/04/%E6%90%AD%E5%BB%BAMaven%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98-1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/29/%E6%90%AD%E5%BB%BAMaven%E6%89%80%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E5%9D%91_%E9%85%8D%E7%BD%AExml%E5%A4%B4%E6%96%87%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2021-08-29T07:49:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-29</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/08/29/%E6%90%AD%E5%BB%BAMaven%E6%89%80%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E5%9D%91_%E9%85%8D%E7%BD%AExml%E5%A4%B4%E6%96%87%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">搭建Maven所遇到的一些小坑之配置xml头文件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/29/%E6%90%AD%E5%BB%BAMaven%E6%89%80%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E5%9D%91_%E9%85%8D%E7%BD%AExml%E5%A4%B4%E6%96%87%E4%BB%B6/">搭建Maven所遇到的一些小坑之配置xml头文件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E4%B8%80%EF%BC%9A-Error-querying-database-Cause-java-sql-SQLException-No-suitable-driver-found-for-jdbc-mysql-localhost-3306-mybatis01"><span class="toc-number">1.</span> <span class="toc-text">问题一：### Error querying database.  Cause: java.sql.SQLException: No suitable driver found for jdbc:mysql&#x2F;&#x2F;localhost:3306&#x2F;mybatis01</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E4%BA%8C%EF%BC%9A%E7%BC%96%E5%86%99%E6%97%B6%EF%BC%8Ccom-%E5%90%8E%E9%9D%A2%E5%B9%B6%E6%B2%A1%E6%9C%89mysql"><span class="toc-number">2.</span> <span class="toc-text">问题二：编写时，com.后面并没有mysql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E4%B8%89%EF%BC%9A-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-SQL-Mapper-Configuration-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-Mapper-XML-Cause"><span class="toc-number">3.</span> <span class="toc-text">问题三：### Cause: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%9B%9B%EF%BC%9A%E6%B3%9B%E5%9E%8B%E6%8A%A5%E9%94%99"><span class="toc-number">4.</span> <span class="toc-text">问题四：泛型报错</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E4%BA%94%EF%BC%9Ajava-lang-Exception-No-tests-found-matching-Method-testSaveUser-com-itheima-test-MybatisTest-from-org-junit-internal-requests-ClassRequest-6267c3bb"><span class="toc-number">5.</span> <span class="toc-text">问题五：java.lang.Exception: No tests found matching Method testSaveUser(com.itheima.test.MybatisTest) from org.junit.internal.requests.ClassRequest@6267c3bb</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E9%81%8D%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2021-08-12T06:41:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-12</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E9%81%8D%E6%96%87%E7%AB%A0/">我的第一遍文章</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/12/hello-world/" class="archive-article-date">
-  	<time datetime="2021-08-11T17:15:11.479Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/12/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -320,8 +397,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
