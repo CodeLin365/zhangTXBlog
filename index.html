@@ -323,6 +323,110 @@
 
 
   
+    <article id="post-搭建Maven的一些经验总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/04/%E6%90%AD%E5%BB%BAMaven%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">搭建Maven的一些经验总结</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/04/%E6%90%AD%E5%BB%BAMaven%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2021-09-04T02:46:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="问题一：-Error-querying-database-Cause-java-sql-SQLException-No-suitable-driver-found-for-jdbc-mysql-localhost-3306-mybatis01"><a href="#问题一：-Error-querying-database-Cause-java-sql-SQLException-No-suitable-driver-found-for-jdbc-mysql-localhost-3306-mybatis01" class="headerlink" title="问题一：### Error querying database.  Cause: java.sql.SQLException: No suitable driver found for jdbc:mysql//localhost:3306/mybatis01"></a>问题一：### Error querying database.  Cause: java.sql.SQLException: No suitable driver found for jdbc:mysql//localhost:3306/mybatis01</h1><blockquote>
+<p>解决方案：</p>
+</blockquote>
+<h3 id="肉眼可见的原因，是因为jdcb-mysql后面忘记加上分号-属于低级错误"><a href="#肉眼可见的原因，是因为jdcb-mysql后面忘记加上分号-属于低级错误" class="headerlink" title="肉眼可见的原因，是因为jdcb:mysql后面忘记加上分号:,属于低级错误!"></a>肉眼可见的原因，是因为jdcb:mysql后面忘记加上分号:,属于低级错误!</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;dataSource type=<span class="string">&quot;POOLED&quot;</span>&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;url&quot;</span> value=<span class="string">&quot;jdbc:mysql://localhost:3306/mybatis01&quot;</span>&gt;&lt;/property&gt;</span><br><span class="line">&lt;/dataSource&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="问题二：编写时，com-后面并没有mysql"><a href="#问题二：编写时，com-后面并没有mysql" class="headerlink" title="问题二：编写时，com.后面并没有mysql"></a>问题二：编写<property name="driver" value="com.mysql.jdbc.Driver"></property>时，com.后面并没有mysql</h1><blockquote>
+<p>解决方案：</p>
+</blockquote>
+<h3 id="原因：没有点击Enable-Auto-Import"><a href="#原因：没有点击Enable-Auto-Import" class="headerlink" title="原因：没有点击Enable Auto-Import"></a>原因：没有点击Enable Auto-Import</h3><p><img src="https://i.loli.net/2021/09/04/JV4TXOxavkqgrUy.png"></p>
+<hr>
+<h1 id="问题三：-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-SQL-Mapper-Configuration-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-Mapper-XML-Cause"><a href="#问题三：-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-SQL-Mapper-Configuration-Cause-org-apache-ibatis-builder-BuilderException-Error-parsing-Mapper-XML-Cause" class="headerlink" title="问题三：### Cause: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause:"></a>问题三：### Cause: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause:</h1><blockquote>
+<p>解决方案：</p>
+</blockquote>
+<h3 id="原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！"><a href="#原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！" class="headerlink" title="原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！"></a>原因：是因为xml配置文件的namespace没有指定全限定接口名，光靠id是无法找到sql语句定位的，必须依靠namespace！</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace=<span class="string">&quot;com.itheima.dao.IUserDao&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/09/04/L39PqjJhzEB8Cpt.png"></p>
+<hr>
+<h1 id="问题四：泛型报错"><a href="#问题四：泛型报错" class="headerlink" title="问题四：泛型报错"></a>问题四：泛型报错</h1><blockquote>
+<p>解决方案：</p>
+</blockquote>
+<h3 id="原因：要先声明后使用-所以要在泛型前加-lt-泛型-gt"><a href="#原因：要先声明后使用-所以要在泛型前加-lt-泛型-gt" class="headerlink" title="原因：要先声明后使用 所以要在泛型前加 &lt;泛型&gt;"></a>原因：要先声明后使用 所以要在泛型前加 &lt;泛型&gt;</h3><p><img src="https://i.loli.net/2021/09/04/NqfgalEk9r6Ycm2.png"></p>
+<hr>
+<h1 id="问题五：java-lang-Exception-No-tests-found-matching-Method-testSaveUser-com-itheima-test-MybatisTest-from-org-junit-internal-requests-ClassRequest-6267c3bb"><a href="#问题五：java-lang-Exception-No-tests-found-matching-Method-testSaveUser-com-itheima-test-MybatisTest-from-org-junit-internal-requests-ClassRequest-6267c3bb" class="headerlink" title="问题五：java.lang.Exception: No tests found matching Method testSaveUser(com.itheima.test.MybatisTest) from org.junit.internal.requests.ClassRequest@6267c3bb"></a>问题五：java.lang.Exception: No tests found matching Method testSaveUser(com.itheima.test.MybatisTest) from org.junit.internal.requests.ClassRequest@6267c3bb</h1><blockquote>
+<p>解决方案：</p>
+</blockquote>
+<h3 id="原因：由于是get-set-生成的方法属性，所以这里-里面写的是属性原名称，开头不用大写，如果是手动敲得，那就开头要大写，如Username"><a href="#原因：由于是get-set-生成的方法属性，所以这里-里面写的是属性原名称，开头不用大写，如果是手动敲得，那就开头要大写，如Username" class="headerlink" title="原因：由于是get set 生成的方法属性，所以这里#{}里面写的是属性原名称，开头不用大写，如果是手动敲得，那就开头要大写，如Username"></a>原因：由于是get set 生成的方法属性，所以这里#{}里面写的是属性原名称，开头不用大写，如果是手动敲得，那就开头要大写，如Username</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=<span class="string">&quot;saveUser&quot;</span> parameterType=<span class="string">&quot;com.itheima.domain.User&quot;</span>&gt;</span><br><span class="line">    <span class="function">insert into <span class="title">user</span><span class="params">(username,birthday,sex,address)</span><span class="title">values</span><span class="params">(#&#123;username&#125;,#&#123;birthday&#125;,#&#123;sex&#125;,#&#123;address&#125;)</span></span>;</span><br><span class="line">&lt;/insert&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>目前先总结到这里！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">小林同学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/04/%E6%90%AD%E5%BB%BAMaven%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-搭建Maven所遇到的一些小坑_配置xml头文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -492,6 +596,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">小林同学</a>
               </li>
             
             <div class="clearfix"></div>
