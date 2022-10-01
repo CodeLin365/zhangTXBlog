@@ -34,6 +34,7 @@
 
 <meta name="generator" content="Hexo 5.4.0"></head>
 
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -165,6 +166,231 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-IntelliJ Idea git操作指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/01/IntelliJ%20Idea%20git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/">IntelliJ Idea Git操作指南</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/01/IntelliJ%20Idea%20git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/" class="archive-article-date">
+  	<time datetime="2022-10-01T09:49:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="IntelliJ-Idea-Git操作指南"><a href="#IntelliJ-Idea-Git操作指南" class="headerlink" title="IntelliJ Idea Git操作指南"></a>IntelliJ Idea Git操作指南</h1><h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><h3 id="创建远程仓库"><a href="#创建远程仓库" class="headerlink" title="创建远程仓库"></a>创建远程仓库</h3><p>第一步需要在github或者gitee代码管理平台创建好仓库</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526143527884.png" alt="image-20220526143527884"></p>
+<ul>
+<li>输入仓库名称</li>
+<li>输入仓库描述</li>
+<li>选择仓库类型，public表示所有人都可见，private表示只有授权过才有权限</li>
+</ul>
+<p>仓库创建好后，默认是一个空仓库，这时候页面会提示如何往仓库推送代码</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526144135461.png" alt="image-20220526144135461"></p>
+<p>注意到界面上有个仓库地址，地址有ssh和https，这两个有什么区别呢</p>
+<ul>
+<li>https：通过http协议进行代码的管理，需要使用用户名密码</li>
+<li>ssh：用过ssh协议进行代码管理，使用的是密钥，可以理解为凭证</li>
+</ul>
+<p>推送仓库的操作后续补充。。(todo)</p>
+<hr>
+<h3 id="关联本地仓库"><a href="#关联本地仓库" class="headerlink" title="关联本地仓库"></a>关联本地仓库</h3><p>如果是本地已有项目需要关联刚创建的远程仓库，具体步骤：</p>
+<ul>
+<li>初始化项目</li>
+</ul>
+<p>在菜单栏选择vcs[^1], 最后点击create git repository </p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526144443813.png" alt="image-20220526144443813"></p>
+<p>选择后会弹出文件夹选择窗口选择当前文件夹即可</p>
+<p>选择文件夹后idea会在当前目录下创建一个<code>.git</code>的文件夹，表示该项目已经是一个使用git版本控制的项目，当前分支默认是<code>master</code>分支</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526144844635.png" alt="image-20220526144844635"></p>
+<ul>
+<li>关联远程分支</li>
+</ul>
+<p>远程仓库在git中称为Remote,一个项目可以关联多个remote，也就是一个项目可以同时推送到多个远程仓库，比如在开发中我们的代码既要推送到客户仓库进行集成，又要推送到公司的仓库进行代码审查，这时候就可以使用多remote进行推送，点击vcs-git-remotes添加远程仓库，如果是第一仓库，名称默认origin，建议不修改。</p>
+<img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526151710329.png" alt="image-20220526151710329" style="zoom:80%;" />
+
+<p>这样我们就完成了本地仓库和远程仓库的关联，后续就可以进行代码的提交，分支的创建等操作。</p>
+<p>[^1]: Version Control System版本控制系统</p>
+<h3 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h3><p>如果是别人创建好并提交过代码的仓库，你需要同步到本地，就需要对仓库进行克隆-clone，选择file-&gt;new-&gt;project from version control,输入远程仓库代码地址：</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526152202656.png" alt="image-20220526152202656"></p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526152224564.png" alt="image-20220526152224564"></p>
+<h3 id="gitignore"><a href="#gitignore" class="headerlink" title="gitignore"></a>gitignore</h3><p>在项目中有些工程文件或程序文件我们不希望提交到远程分支，那么我们就需要准备一个名为.gitignore的文件，将不希望提交的文件都写到该文件里，git就不会对这些文件进行提交。</p>
+<p>该文件很容易找到</p>
+<img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526152808160.png" alt="image-20220526152808160" style="zoom:150%;" />
+
+<p>配置规则前往<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_26636601/article/details/108601570?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165355024716781685354377%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=165355024716781685354377&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-108601570-null-null.142%5Ev10%5Econtrol,157%5Ev12%5Econtrol&utm_term=.gitignore%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187">这里</a></p>
+<h2 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h2><p>代码修改后需提交到本地仓库，这个过程称为commit,代码提交到本地分支后，就可以将commit的代码进一步提交到远程分支，这个过程为push，从远程分支更新代码过程称为：pull,这三个git操作是最常用的三个操作</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526154129621.png" alt="image-20220526154129621"></p>
+<ul>
+<li>更新代码，pull操作</li>
+<li>提交到本地仓库，commit操作</li>
+<li>提交到远程仓库，push操作</li>
+</ul>
+<p>有些idea侧边栏没有commit按钮，可以按照我下面的操作打开。按钮出来后点击commit图标就可以提交代码</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526160232975.png" alt="image-20220526160232975"></p>
+<p>提交代码界面如下</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526160522536.png" alt="image-20220526160522536"></p>
+<ul>
+<li>①本次提交有被修改的文件</li>
+<li>②本次commit的描述信息，必须填上说明本次修改了哪些内容，每一次不同目的的修改都要commit一次</li>
+<li>如何写好commit请看<a href="%5Bhttps://github.com/RomuloOliveira/commit-messages-guide%5D(https://link.segmentfault.com/?enc=riatQDCVOSk9QcqN+0AV/A==.LskkV/cqvaCpYvb07sOeFxBI4025aXyM7MyjD6mqycibeMHlAHbLNXZY1RJsRgBy5hb56mLLJmzBCDQPpn8x5A==)">这里</a>和<a target="_blank" rel="noopener" href="https://github.com/joelparkerhenderson/git-commit-message">这里</a></li>
+</ul>
+<p>注意到①文件前面都有一个复选框，如果是新添加的文件，没有特殊配置的话是不会自动勾选的，新添加的文件需要手动勾选才能提交，可以直接对顶层文件夹全选即可，commit后需要进行push才能同步到远程仓库</p>
+<h2 id="回滚代码"><a href="#回滚代码" class="headerlink" title="回滚代码"></a>回滚代码</h2><p>git回滚代码有两种方式</p>
+<ul>
+<li>reset</li>
+<li>revert</li>
+</ul>
+<p>这两种有什么区别呢，假设我们提交了三次commit</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">commit1 -&gt; commit2 -&gt; commit3</span><br></pre></td></tr></table></figure>
+
+<p>如果我想会滚到commit2，如果用reset的话，那么commit2之后的所有修改都会被丢弃，也就是把commit2之后的commit全部砍掉了，revert有点像undo，会把commit2做的操作反做一遍，也就是undo，并且生成一个新的commit，变成</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">commit1 -&gt; commit2 -&gt; commit3 -&gt; commit4</span><br></pre></td></tr></table></figure>
+
+<p>举个栗子，比如我们的系统在不断的迭代，突然某一天，产品经理说之前已经上线的一个功能不要了，那么就可以找到该功能对应的commit进行revert，这样既移除对应的功能又能保留后续的新功能。</p>
+<h3 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h3><p>在idea地步工具栏，点击<code>Git</code>工具栏，切换到<code>Log</code>标签页，可以看到本地commit日志和远程commit日志，在指定commit上右键选择<code>Reset Current Branch to Hear</code>就可以以reset的方式回滚到该commit上</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526163005887.png" alt="image-20220526163005887"></p>
+<h3 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h3><p>revert可以将指定的commit所做的修改全部撤销掉，而不影响其他commit的修改，假设我们有三个文件，分别为file1.txt，file2.txt，file3.txt，现在提交三个commit，三个commit分别为</p>
+<ul>
+<li>Commit1：向file1.txt中添加内容</li>
+<li>Commit2：向file2.txt中添加内容</li>
+<li>Commit3：向file3.txt中添加内容</li>
+</ul>
+<p>现在我们在<code>Commit2：文件2修改</code>这个commit上面右键选择<code>Revert Commit</code>，这时候会弹出提交窗口，idea会自动提交一次新的commit，commit后我们发现文件2的内容没有了，也就是撤销了commit2修改的内容，commit后执行push操作就能推送到远程仓库了，因为是生成了新的commit，所以无需force push就能提交到远程仓库</p>
+<blockquote>
+<p>revert操作会经常碰到代码冲突的情况，这时候就需要手动去解决冲突，解决方法下面也会详细说明</p>
+</blockquote>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p>分支是git中非常重要的概念，假设没有git的情况下，我们系统上线了，在线上稳定运行，这时候你需要开发后续的功能但又想保留目前线上版本的代码，因为可能线上有紧急bug需要修复，你需要使用当时的版本进行修改，所以你可能会copy一份代码做备份，等新功能开发完，你还需要将这段时间在备份的代码上修改的代码整合过来，如果这个过程是人工进行的，非常容易出错，所以git提供了分支解决这个问题，线上运行的代码可以在主分支上，比如master分支，开发新功能可以从master分支切一个分支出来，比如dev分支，修复bug也可以从master分支上切一个分支出来，比如fix分支，当bug修复完毕，将fix分支整合(merge)到master分支上，当新功能开发完毕后，将dev分支整合到master分支，就完成了上述所有的操作。</p>
+<h3 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h3><p>在idea右下角显示当前分支</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526163455761.png" alt="image-20220526163455761"></p>
+<p>点开可以进行新建分支</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526163743624.png" alt="image-20220526163743624"></p>
+<p>也可以从某个commit切出一个分支，具体做法在commit日志上右键<code>New Branch</code>即可</p>
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p>右键分支，可以checkout进行切换</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//46804680image-20220526163538909.png" alt="image-20220526163538909"></p>
+<blockquote>
+<p>==切换分支前需要把当前分支的修改提交或者暂存，暂存后续也会提到==</p>
+</blockquote>
+<h3 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h3><p>比如我要把fix分支合并到dev分支上，那么将当前分支切换到dev上，选择fix分支<code>Merge into Current</code></p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526164133645.png" alt="image-20220526164133645"></p>
+<blockquote>
+<p>合并过程可能会产生冲突，需要解决完冲突才能完成合并，解决冲突下文也会提到</p>
+<p>合并完分支后，建议把fix分支进行删除，避免误将分支提交到远程仓库，导致分支混乱。</p>
+</blockquote>
+<p>注意到上面菜单中在Merge上面还有一个<code>Rebase Current onto Selected</code>的选择，合并有两种方式，一种是merge，一种是rebase，这两种有什么区别呢，</p>
+<ul>
+<li>merge会保留分支提交信息</li>
+<li>merge会创建一次Merge branch的commit信息</li>
+<li>相比merge，rebase会将分支上的commit整合到当前分支上，让整个代码周期更为清晰</li>
+<li>相比merge，rebase并不会产生多余的commit信息</li>
+</ul>
+<p>具体用rebase和merge，各有各的好处，取决于项目的规范要求。</p>
+<h3 id="冲突解决"><a href="#冲突解决" class="headerlink" title="冲突解决"></a>冲突解决</h3><p>不管是rebase还是merge，在进行合并时难免会产生冲突，所谓的冲突是指两个分支上的代码对同一个地方进行修改，系统无法判断该保留哪一份代码，需要人工进行干预解决冲突的过程。如果有冲突产生，在进行合并时会列出所有冲突的代码</p>
+<p>这时候有三个选项可以选择</p>
+<ul>
+<li>Accept Yours：保留当前分支代码，丢弃被合并的分支代码</li>
+<li>Accept Theirs：保留被合并分支代码，丢失当前分支代码</li>
+<li>Merge：手工进行合并</li>
+</ul>
+<p>选择Merge后进入手工合并代码界面</p>
+<p>后续补充。。todo</p>
+<ul>
+<li>① 当前分支代码</li>
+<li>② 合并后的代码</li>
+<li>③ 被合并的分支代码</li>
+</ul>
+<p>idea会把两边不同的进行高亮显示，你可以根据实际情况进行合并</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526164844667.png" alt="image-20220526164844667"></p>
+<p>合并后会弹出一个确认框，如果所有的冲突都解决完毕，可以点击<code>Apply Change and Mark Resolved</code>，表示冲突已解决</p>
+<h2 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h2><h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><p>一般我们在发布一个新版本时会对项目打一个标签（tag），以表示其重要性，在gihub上我们也经常看到项目发布新版本时都会打上标签</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526165330684.png" alt="image-20220526165330684"></p>
+<p>在commit的log上右键commit就以为为该commit创建一个标签，标签名称一般为版本号，比如<code>v1.0 v1.1</code>等</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526165445091.png" alt="image-20220526165445091"></p>
+<p>在push代码时可以选择将标签一起提交至远程仓库</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526165607751.png" alt="image-20220526165607751"></p>
+<p>这样我们就能在远程仓库中看到标签，并且系统会自动将标签对应的commit当时的代码进行打包归档</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//46801460000040707608" alt="img"></p>
+<h3 id="根据标签拉取代码"><a href="#根据标签拉取代码" class="headerlink" title="根据标签拉取代码"></a>根据标签拉取代码</h3><p>比如需要对v1.0的代码进行修复，我们需要拉取v1.0的代码，并且修复完毕后需要合并到当前分支</p>
+<ul>
+<li>根据tag拉取代码</li>
+</ul>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526165847099.png" alt="image-20220526165847099"></p>
+<p>输入标签名称就可以拉取到代码，但此时的分支名称是分支对应的commit编号，说白了就是一个commit，我们需要在该分支上再创建一个分支才能对代码进行修改，创建的方法和上面一样，就是点击分支名称，<code>New Branch</code>即可，修改后提交，按照正常分支合并即可。</p>
+<h2 id="补丁"><a href="#补丁" class="headerlink" title="补丁"></a>补丁</h2><h3 id="patch"><a href="#patch" class="headerlink" title="patch"></a>patch</h3><p>可以为一个或多个commit创建一个补丁（Patch），idea会创建一个.patch的文件，里面记录了文件的变化</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526165945731.png" alt="image-20220526165945731"></p>
+<p>在分支上可以将补丁进行导入，<code>VCS -&gt; Apply Patch</code></p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526170048047.png" alt="image-20220526170048047"></p>
+<blockquote>
+<p>打补丁也是一种合并的方式，也需解决代码冲突问题</p>
+</blockquote>
+<h3 id="cherry-pick"><a href="#cherry-pick" class="headerlink" title="cherry-pick"></a>cherry-pick</h3><p>和打补丁类似，cherry-pick可以直接将其他分支的一个或者多个commit应用到当前分支，无需导出patch文件</p>
+<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526170222439.png" alt="image-20220526170222439"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">小林同学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/01/IntelliJ%20Idea%20git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -600,226 +826,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/10/01/swagger%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%AF%B4%E6%98%8E/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-IntelliJ Idea git操作指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/01/IntelliJ%20Idea%20git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/">IntelliJ Idea Git操作指南</a>
-    </h1>
-  
-
-        
-        <a href="/2022/10/01/IntelliJ%20Idea%20git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/" class="archive-article-date">
-  	<time datetime="2022-10-01T09:49:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="IntelliJ-Idea-Git操作指南"><a href="#IntelliJ-Idea-Git操作指南" class="headerlink" title="IntelliJ Idea Git操作指南"></a>IntelliJ Idea Git操作指南</h1><h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><h3 id="创建远程仓库"><a href="#创建远程仓库" class="headerlink" title="创建远程仓库"></a>创建远程仓库</h3><p>第一步需要在github或者gitee代码管理平台创建好仓库</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526143527884.png" alt="image-20220526143527884"></p>
-<ul>
-<li>输入仓库名称</li>
-<li>输入仓库描述</li>
-<li>选择仓库类型，public表示所有人都可见，private表示只有授权过才有权限</li>
-</ul>
-<p>仓库创建好后，默认是一个空仓库，这时候页面会提示如何往仓库推送代码</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526144135461.png" alt="image-20220526144135461"></p>
-<p>注意到界面上有个仓库地址，地址有ssh和https，这两个有什么区别呢</p>
-<ul>
-<li>https：通过http协议进行代码的管理，需要使用用户名密码</li>
-<li>ssh：用过ssh协议进行代码管理，使用的是密钥，可以理解为凭证</li>
-</ul>
-<p>推送仓库的操作后续补充。。(todo)</p>
-<hr>
-<h3 id="关联本地仓库"><a href="#关联本地仓库" class="headerlink" title="关联本地仓库"></a>关联本地仓库</h3><p>如果是本地已有项目需要关联刚创建的远程仓库，具体步骤：</p>
-<ul>
-<li>初始化项目</li>
-</ul>
-<p>在菜单栏选择vcs[^1], 最后点击create git repository </p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526144443813.png" alt="image-20220526144443813"></p>
-<p>选择后会弹出文件夹选择窗口选择当前文件夹即可</p>
-<p>选择文件夹后idea会在当前目录下创建一个<code>.git</code>的文件夹，表示该项目已经是一个使用git版本控制的项目，当前分支默认是<code>master</code>分支</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526144844635.png" alt="image-20220526144844635"></p>
-<ul>
-<li>关联远程分支</li>
-</ul>
-<p>远程仓库在git中称为Remote,一个项目可以关联多个remote，也就是一个项目可以同时推送到多个远程仓库，比如在开发中我们的代码既要推送到客户仓库进行集成，又要推送到公司的仓库进行代码审查，这时候就可以使用多remote进行推送，点击vcs-git-remotes添加远程仓库，如果是第一仓库，名称默认origin，建议不修改。</p>
-<img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526151710329.png" alt="image-20220526151710329" style="zoom:80%;" />
-
-<p>这样我们就完成了本地仓库和远程仓库的关联，后续就可以进行代码的提交，分支的创建等操作。</p>
-<p>[^1]: Version Control System版本控制系统</p>
-<h3 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h3><p>如果是别人创建好并提交过代码的仓库，你需要同步到本地，就需要对仓库进行克隆-clone，选择file-&gt;new-&gt;project from version control,输入远程仓库代码地址：</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526152202656.png" alt="image-20220526152202656"></p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526152224564.png" alt="image-20220526152224564"></p>
-<h3 id="gitignore"><a href="#gitignore" class="headerlink" title="gitignore"></a>gitignore</h3><p>在项目中有些工程文件或程序文件我们不希望提交到远程分支，那么我们就需要准备一个名为.gitignore的文件，将不希望提交的文件都写到该文件里，git就不会对这些文件进行提交。</p>
-<p>该文件很容易找到</p>
-<img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526152808160.png" alt="image-20220526152808160" style="zoom:150%;" />
-
-<p>配置规则前往<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_26636601/article/details/108601570?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165355024716781685354377%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=165355024716781685354377&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-108601570-null-null.142%5Ev10%5Econtrol,157%5Ev12%5Econtrol&utm_term=.gitignore%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187">这里</a></p>
-<h2 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h2><p>代码修改后需提交到本地仓库，这个过程称为commit,代码提交到本地分支后，就可以将commit的代码进一步提交到远程分支，这个过程为push，从远程分支更新代码过程称为：pull,这三个git操作是最常用的三个操作</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526154129621.png" alt="image-20220526154129621"></p>
-<ul>
-<li>更新代码，pull操作</li>
-<li>提交到本地仓库，commit操作</li>
-<li>提交到远程仓库，push操作</li>
-</ul>
-<p>有些idea侧边栏没有commit按钮，可以按照我下面的操作打开。按钮出来后点击commit图标就可以提交代码</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526160232975.png" alt="image-20220526160232975"></p>
-<p>提交代码界面如下</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526160522536.png" alt="image-20220526160522536"></p>
-<ul>
-<li>①本次提交有被修改的文件</li>
-<li>②本次commit的描述信息，必须填上说明本次修改了哪些内容，每一次不同目的的修改都要commit一次</li>
-<li>如何写好commit请看<a href="%5Bhttps://github.com/RomuloOliveira/commit-messages-guide%5D(https://link.segmentfault.com/?enc=riatQDCVOSk9QcqN+0AV/A==.LskkV/cqvaCpYvb07sOeFxBI4025aXyM7MyjD6mqycibeMHlAHbLNXZY1RJsRgBy5hb56mLLJmzBCDQPpn8x5A==)">这里</a>和<a target="_blank" rel="noopener" href="https://github.com/joelparkerhenderson/git-commit-message">这里</a></li>
-</ul>
-<p>注意到①文件前面都有一个复选框，如果是新添加的文件，没有特殊配置的话是不会自动勾选的，新添加的文件需要手动勾选才能提交，可以直接对顶层文件夹全选即可，commit后需要进行push才能同步到远程仓库</p>
-<h2 id="回滚代码"><a href="#回滚代码" class="headerlink" title="回滚代码"></a>回滚代码</h2><p>git回滚代码有两种方式</p>
-<ul>
-<li>reset</li>
-<li>revert</li>
-</ul>
-<p>这两种有什么区别呢，假设我们提交了三次commit</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">commit1 -&gt; commit2 -&gt; commit3</span><br></pre></td></tr></table></figure>
-
-<p>如果我想会滚到commit2，如果用reset的话，那么commit2之后的所有修改都会被丢弃，也就是把commit2之后的commit全部砍掉了，revert有点像undo，会把commit2做的操作反做一遍，也就是undo，并且生成一个新的commit，变成</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">commit1 -&gt; commit2 -&gt; commit3 -&gt; commit4</span><br></pre></td></tr></table></figure>
-
-<p>举个栗子，比如我们的系统在不断的迭代，突然某一天，产品经理说之前已经上线的一个功能不要了，那么就可以找到该功能对应的commit进行revert，这样既移除对应的功能又能保留后续的新功能。</p>
-<h3 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h3><p>在idea地步工具栏，点击<code>Git</code>工具栏，切换到<code>Log</code>标签页，可以看到本地commit日志和远程commit日志，在指定commit上右键选择<code>Reset Current Branch to Hear</code>就可以以reset的方式回滚到该commit上</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526163005887.png" alt="image-20220526163005887"></p>
-<h3 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h3><p>revert可以将指定的commit所做的修改全部撤销掉，而不影响其他commit的修改，假设我们有三个文件，分别为file1.txt，file2.txt，file3.txt，现在提交三个commit，三个commit分别为</p>
-<ul>
-<li>Commit1：向file1.txt中添加内容</li>
-<li>Commit2：向file2.txt中添加内容</li>
-<li>Commit3：向file3.txt中添加内容</li>
-</ul>
-<p>现在我们在<code>Commit2：文件2修改</code>这个commit上面右键选择<code>Revert Commit</code>，这时候会弹出提交窗口，idea会自动提交一次新的commit，commit后我们发现文件2的内容没有了，也就是撤销了commit2修改的内容，commit后执行push操作就能推送到远程仓库了，因为是生成了新的commit，所以无需force push就能提交到远程仓库</p>
-<blockquote>
-<p>revert操作会经常碰到代码冲突的情况，这时候就需要手动去解决冲突，解决方法下面也会详细说明</p>
-</blockquote>
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p>分支是git中非常重要的概念，假设没有git的情况下，我们系统上线了，在线上稳定运行，这时候你需要开发后续的功能但又想保留目前线上版本的代码，因为可能线上有紧急bug需要修复，你需要使用当时的版本进行修改，所以你可能会copy一份代码做备份，等新功能开发完，你还需要将这段时间在备份的代码上修改的代码整合过来，如果这个过程是人工进行的，非常容易出错，所以git提供了分支解决这个问题，线上运行的代码可以在主分支上，比如master分支，开发新功能可以从master分支切一个分支出来，比如dev分支，修复bug也可以从master分支上切一个分支出来，比如fix分支，当bug修复完毕，将fix分支整合(merge)到master分支上，当新功能开发完毕后，将dev分支整合到master分支，就完成了上述所有的操作。</p>
-<h3 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h3><p>在idea右下角显示当前分支</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526163455761.png" alt="image-20220526163455761"></p>
-<p>点开可以进行新建分支</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526163743624.png" alt="image-20220526163743624"></p>
-<p>也可以从某个commit切出一个分支，具体做法在commit日志上右键<code>New Branch</code>即可</p>
-<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p>右键分支，可以checkout进行切换</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//46804680image-20220526163538909.png" alt="image-20220526163538909"></p>
-<blockquote>
-<p>==切换分支前需要把当前分支的修改提交或者暂存，暂存后续也会提到==</p>
-</blockquote>
-<h3 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h3><p>比如我要把fix分支合并到dev分支上，那么将当前分支切换到dev上，选择fix分支<code>Merge into Current</code></p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526164133645.png" alt="image-20220526164133645"></p>
-<blockquote>
-<p>合并过程可能会产生冲突，需要解决完冲突才能完成合并，解决冲突下文也会提到</p>
-<p>合并完分支后，建议把fix分支进行删除，避免误将分支提交到远程仓库，导致分支混乱。</p>
-</blockquote>
-<p>注意到上面菜单中在Merge上面还有一个<code>Rebase Current onto Selected</code>的选择，合并有两种方式，一种是merge，一种是rebase，这两种有什么区别呢，</p>
-<ul>
-<li>merge会保留分支提交信息</li>
-<li>merge会创建一次Merge branch的commit信息</li>
-<li>相比merge，rebase会将分支上的commit整合到当前分支上，让整个代码周期更为清晰</li>
-<li>相比merge，rebase并不会产生多余的commit信息</li>
-</ul>
-<p>具体用rebase和merge，各有各的好处，取决于项目的规范要求。</p>
-<h3 id="冲突解决"><a href="#冲突解决" class="headerlink" title="冲突解决"></a>冲突解决</h3><p>不管是rebase还是merge，在进行合并时难免会产生冲突，所谓的冲突是指两个分支上的代码对同一个地方进行修改，系统无法判断该保留哪一份代码，需要人工进行干预解决冲突的过程。如果有冲突产生，在进行合并时会列出所有冲突的代码</p>
-<p>这时候有三个选项可以选择</p>
-<ul>
-<li>Accept Yours：保留当前分支代码，丢弃被合并的分支代码</li>
-<li>Accept Theirs：保留被合并分支代码，丢失当前分支代码</li>
-<li>Merge：手工进行合并</li>
-</ul>
-<p>选择Merge后进入手工合并代码界面</p>
-<p>后续补充。。todo</p>
-<ul>
-<li>① 当前分支代码</li>
-<li>② 合并后的代码</li>
-<li>③ 被合并的分支代码</li>
-</ul>
-<p>idea会把两边不同的进行高亮显示，你可以根据实际情况进行合并</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526164844667.png" alt="image-20220526164844667"></p>
-<p>合并后会弹出一个确认框，如果所有的冲突都解决完毕，可以点击<code>Apply Change and Mark Resolved</code>，表示冲突已解决</p>
-<h2 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h2><h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><p>一般我们在发布一个新版本时会对项目打一个标签（tag），以表示其重要性，在gihub上我们也经常看到项目发布新版本时都会打上标签</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526165330684.png" alt="image-20220526165330684"></p>
-<p>在commit的log上右键commit就以为为该commit创建一个标签，标签名称一般为版本号，比如<code>v1.0 v1.1</code>等</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526165445091.png" alt="image-20220526165445091"></p>
-<p>在push代码时可以选择将标签一起提交至远程仓库</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526165607751.png" alt="image-20220526165607751"></p>
-<p>这样我们就能在远程仓库中看到标签，并且系统会自动将标签对应的commit当时的代码进行打包归档</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//46801460000040707608" alt="img"></p>
-<h3 id="根据标签拉取代码"><a href="#根据标签拉取代码" class="headerlink" title="根据标签拉取代码"></a>根据标签拉取代码</h3><p>比如需要对v1.0的代码进行修复，我们需要拉取v1.0的代码，并且修复完毕后需要合并到当前分支</p>
-<ul>
-<li>根据tag拉取代码</li>
-</ul>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526165847099.png" alt="image-20220526165847099"></p>
-<p>输入标签名称就可以拉取到代码，但此时的分支名称是分支对应的commit编号，说白了就是一个commit，我们需要在该分支上再创建一个分支才能对代码进行修改，创建的方法和上面一样，就是点击分支名称，<code>New Branch</code>即可，修改后提交，按照正常分支合并即可。</p>
-<h2 id="补丁"><a href="#补丁" class="headerlink" title="补丁"></a>补丁</h2><h3 id="patch"><a href="#patch" class="headerlink" title="patch"></a>patch</h3><p>可以为一个或多个commit创建一个补丁（Patch），idea会创建一个.patch的文件，里面记录了文件的变化</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526165945731.png" alt="image-20220526165945731"></p>
-<p>在分支上可以将补丁进行导入，<code>VCS -&gt; Apply Patch</code></p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526170048047.png" alt="image-20220526170048047"></p>
-<blockquote>
-<p>打补丁也是一种合并的方式，也需解决代码冲突问题</p>
-</blockquote>
-<h3 id="cherry-pick"><a href="#cherry-pick" class="headerlink" title="cherry-pick"></a>cherry-pick</h3><p>和打补丁类似，cherry-pick可以直接将其他分支的一个或者多个commit应用到当前分支，无需导出patch文件</p>
-<p><img src="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com//4680image-20220526170222439.png" alt="image-20220526170222439"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">小林同学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/01/IntelliJ%20Idea%20git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/">展开全文 >></a>
         </p>
       
 
@@ -1332,5 +1338,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haru01.model.json"},"display":{"position":"right","width":100,"height":200,"hOffset":100,"vOffset":0},"mobile":{"show":false}});</script></body>
 </html>
